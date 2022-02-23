@@ -7,6 +7,8 @@ export const Container = styled.div`
 
   p {
     margin: 18px 0;
+    text-align: left;
+    color: white;
   }
 `;
 

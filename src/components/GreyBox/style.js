@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const LoginContainer = styled.div`
-  height: 100%;
-  width: 300px;
+export const BoxContainer = styled.div`
+  height: 500px;
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,26 +13,21 @@ export const LoginContainer = styled.div`
     margin: 20px 0;
   }
   h3 {
-    margin-top: 34px;
-    margin-bottom: 22px;
+    margin: 22px;
     text-align: center;
   }
-
-  > div {
-    height: 450px;
-    border-radius: 3px;
-    background-color: var(--grey3);
-    width: 100%;
-  }
-`;
-
-export const BoxContainer = styled.div`
-  width: 90%;
-  margin: 0 auto;
 
   > p {
     color: var(--grey1);
     text-align: center;
     margin-top: 27px;
   }
+`;
+
+export const GreyBox = styled.div`
+  height: 100%;
+  border-radius: 3px;
+  background-color: var(--grey3);
+  width: 100%;
+  padding: 20px;
 `;
