@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appearFromRight = keyframes`
+from{
+    opacity: 0;
+    transform: translateX(-50px);
+}
+to{
+    opacity: 1;
+    transform: translateX(0px);
+}
+`;
 
 export const BoxContainer = styled.div`
   height: 500px;
@@ -7,6 +18,8 @@ export const BoxContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  margin: 50px 0;
+  animation: ${appearFromRight} 1s;
 
   h2 {
     color: var(--primary);
@@ -30,4 +43,9 @@ export const GreyBox = styled.div`
   background-color: var(--grey3);
   width: 100%;
   padding: 20px;
+
+  strong {
+    font-size: 12px;
+    color: var(--negative);
+  }
 `;

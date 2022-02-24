@@ -15,10 +15,10 @@ export const Container = styled.div`
 export const InputContainer = styled.div`
   width: 100%;
   height: 40px;
-  border: 1px solid white;
+  border: 1px solid;
+  border-color: ${(props) => props.color};
   background-color: var(--grey2);
   border-radius: 4px;
-  padding-left: 13px;
   display: flex;
 
   svg {
@@ -38,5 +38,6 @@ export const InputContainer = styled.div`
     color: white;
     border: none;
     height: 100%;
+    padding-left: 13px;
   }
 `;

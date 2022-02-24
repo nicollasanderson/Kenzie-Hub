@@ -1,14 +1,24 @@
 import { InputContainer, Container } from "./style";
 
-function InputStyled({ label, icon, setShowPassword, showPassword, ...rest }) {
-  console.log(rest);
+function InputStyled({
+  name,
+  register,
+  label,
+  icon,
+  color,
+  setShowPassword,
+  showPassword,
+  ...rest
+}) {
   return (
     <Container>
       <p>{label}</p>
-      <InputContainer>
-        <input {...rest} />
+      <InputContainer color={color}>
+        <input {...register(`${name}`)} {...rest} />
         {!!icon && (
-          <button onClick={() => setShowPassword(!showPassword)}>{icon}</button>
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            {icon}
+          </button>
         )}
       </InputContainer>
     </Container>

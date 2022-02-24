@@ -1,6 +1,6 @@
 import { Container, SelectStyled } from "../Select/style";
 
-function Select({ label, name }) {
+function Select({ label, name, register }) {
   const arrModulos = [
     "Módulo 1",
     "Módulo 2",
@@ -13,7 +13,7 @@ function Select({ label, name }) {
     <Container>
       <p>{label}</p>
       <SelectStyled placeholder={name}>
-        <select name="modulos" id="modulos">
+        <select id="modulos" {...register(name)}>
           {arrModulos.map((element) => (
             <option key={element} value={element}>
               {element}
