@@ -11,7 +11,7 @@ function Routes() {
 
   const [session, setSession] = useState(false);
   //const [dataResponse, setDataResponse] = useState([]);
-  const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {

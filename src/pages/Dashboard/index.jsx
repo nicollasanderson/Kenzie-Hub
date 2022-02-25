@@ -32,6 +32,7 @@ function Dashboard({ session, setSession, userId, setUserId }) {
   const [activeModal, setActiveModal] = useState();
   const [arrTechs, setArrTechs] = useState([]);
   const [cardId, setCardId] = useState(0);
+  const [user, setUser] = useState("");
 
   const history = useHistory();
 
@@ -50,14 +51,12 @@ function Dashboard({ session, setSession, userId, setUserId }) {
   }
 
   function onSubmit(data) {
-    console.log(data);
     const token = window.localStorage.getItem("@kenziehub:token");
     api
       .post("/users/techs", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response);
         refreshArr();
         setActiveModal();
         return toast.success("Linguagem adicionada :D");
@@ -95,12 +94,14 @@ function Dashboard({ session, setSession, userId, setUserId }) {
 
   useEffect(() => {
     setUserId(window.localStorage.getItem("@kenziehub:userId"));
-    api
-      .get(`/users/${userId}`)
-      .then((response) => setArrTechs(response.data.techs));
+    if (userId) {
+      api.get(`/users/${userId}`).then((response) => {
+        setUser(response.data);
+        setArrTechs(response.data.techs);
+      });
+    }
   }, []);
 
-  console.log(arrTechs);
   if (!session) {
     history.push("/");
   }
@@ -121,6 +122,7 @@ function Dashboard({ session, setSession, userId, setUserId }) {
             label="Nome"
             placeholder="Typescript"
           />
+          {errors.title ? <strong>{errors.title.message}</strong> : ""}
           <Select
             name="status"
             label="Selecionar status"
@@ -149,6 +151,7 @@ function Dashboard({ session, setSession, userId, setUserId }) {
             label="Nome do projeto"
             placeholder="Typescript"
           />
+          {errors.title ? <strong>{errors.title.message}</strong> : ""}
           <Select
             name="status"
             label="Status"
@@ -186,8 +189,8 @@ function Dashboard({ session, setSession, userId, setUserId }) {
       </HeaderContainer>
       <DivInfoUser>
         <div>
-          <h3>Olá, user</h3>
-          <p>Primeiro módulo (introdução ao Frontend)</p>
+          <h3>Olá, {user.name}</h3>
+          <p>{user.course_module} (introdução ao Frontend)</p>
         </div>
       </DivInfoUser>
       <MainInfos>

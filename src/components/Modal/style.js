@@ -11,9 +11,9 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  height: 296px;
+  height: 310px;
   width: 90%;
-  max-width: 800px;
+  max-width: 400px;
   border-radius: 4px;
   background-color: var(--grey3);
 
