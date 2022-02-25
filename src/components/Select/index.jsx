@@ -1,20 +1,12 @@
 import { Container, SelectStyled } from "../Select/style";
 
-function Select({ label, name, register }) {
-  const arrModulos = [
-    "Módulo 1",
-    "Módulo 2",
-    "Módulo 3",
-    "Módulo 4",
-    "Módulo 5",
-    "Módulo 6",
-  ];
+function Select({ label, name, register, arr }) {
   return (
     <Container>
       <p>{label}</p>
       <SelectStyled placeholder={name}>
-        <select id="modulos" {...register(name)}>
-          {arrModulos.map((element) => (
+        <select id="select" {...register(name)}>
+          {arr.map((element) => (
             <option key={element} value={element}>
               {element}
             </option>

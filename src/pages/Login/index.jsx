@@ -11,12 +11,19 @@ import api from "../../services/api";
 import { useEffect } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 
-function Login({ handleNavigation, setSession, session }) {
+function Login({
+  handleNavigation,
+  setSession,
+  session,
+  setUserId,
+  setShowPassword,
+  showPassword,
+}) {
   const schema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup.string().required("Senha obrigatória"),
   });
-  const [showPassword, setShowPassword] = useState(false);
+
   const [response, setResponse] = useState("");
 
   const {
@@ -33,6 +40,7 @@ function Login({ handleNavigation, setSession, session }) {
       .post("/sessions", data)
       .then((response) => {
         setResponse(response);
+        setUserId(response.data.user.id);
         console.log(response);
         return toast.success("Bem-vindo! :D");
       })
@@ -44,6 +52,7 @@ function Login({ handleNavigation, setSession, session }) {
   useEffect(() => {
     if (response.status === 200) {
       window.localStorage.setItem("@kenziehub:token", response.data.token);
+      window.localStorage.setItem("@kenziehub:userId", response.data.user.id);
       setSession(true);
       history.push("/dashboard");
     }

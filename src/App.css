@@ -2,13 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  width: 90%;
-  margin: 50px auto;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
 }
 
 @media (max-width: 370px) {
-  .App {
-    margin: 170px auto;
-  }
 }

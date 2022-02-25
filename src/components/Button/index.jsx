@@ -1,8 +1,8 @@
 import { ButtonContainer } from "./style";
 
-function Button({ name, color, ...rest }) {
+function Button({ name, tamanho = "100%", color, ...rest }) {
   return (
-    <ButtonContainer color={color}>
+    <ButtonContainer width={tamanho} color={color}>
       <button {...rest}>{name}</button>
     </ButtonContainer>
   );

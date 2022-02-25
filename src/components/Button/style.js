@@ -8,7 +8,7 @@ export const ButtonContainer = styled.div`
     background-color: ${(props) => props.color};
     color: white;
     border: none;
-    width: 100%;
+    width: ${(props) => props.width};
     height: 100%;
     border-radius: 4px;
   }

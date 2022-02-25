@@ -10,9 +10,13 @@ function Routes() {
   const history = useHistory();
 
   const [session, setSession] = useState(false);
+  //const [dataResponse, setDataResponse] = useState([]);
+  const [userId, setUserId] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("@kenziehub:token");
+
     if (token) {
       return setSession(true);
     }
@@ -27,15 +31,28 @@ function Routes() {
       <Route exact path="/">
         <Login
           handleNavigation={handleNavigation}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
           session={session}
           setSession={setSession}
+          setUserId={setUserId}
+          // setDataResponse={setDataResponse}
         />
       </Route>
       <Route path="/singup">
-        <Singup handleNavigation={handleNavigation} />
+        <Singup
+          handleNavigation={handleNavigation}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
+        />
       </Route>
       <Route path="/dashboard">
-        <Dashboard session={session} />
+        <Dashboard
+          session={session}
+          setUserId={setUserId}
+          userId={userId}
+          setSession={setSession}
+        />
       </Route>
     </Switch>
   );

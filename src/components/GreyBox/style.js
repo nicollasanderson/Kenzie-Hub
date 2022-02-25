@@ -12,8 +12,8 @@ to{
 `;
 
 export const BoxContainer = styled.div`
-  height: 500px;
   width: 350px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,6 @@ export const BoxContainer = styled.div`
 `;
 
 export const GreyBox = styled.div`
-  height: 100%;
   border-radius: 3px;
   background-color: var(--grey3);
   width: 100%;
